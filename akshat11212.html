@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I'm Sorry — Akshat</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(#0f0f1f, #2b1230);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CARD */
+.card {
+  width: 92%;
+  max-width: 420px;
+  height: 88vh;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* MOON */
+.moon {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#fff, #ffe7c5, #0000);
+  border-radius: 50%;
+  position: absolute;
+  top: 5%;
+  right: 8%;
+  opacity: 0.9;
+  box-shadow: 0 0 40px #fff6;
+}
+
+/* TEXT */
+.title {
+  margin-top: 150px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 32px;
+  color: #ffdbe9;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  text-align: center;
+  color: #fbeaf2;
+  padding: 0 6px;
+}
+
+.signature {
+  margin-top: 20px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 32px;
+  text-align: center;
+  color: #ff9ec3;
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  pointer-events: none;
+  animation: float 1.2s ease-out forwards;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120px) scale(1.8); opacity: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <div class="moon"></div>
+
+  <div class="title">I'm Sorry</div>
+
+  <div class="message">
+    Dear Bestie,
+    main tumse kan pakad ke maafi mangta hoo 
+    I am really sorry for that day 
+    mujhe us lehje tumse baat nahi karni chahiye tha
+    Mujhe afsos hai agar maine tumhe hurt kiya.  
+    I just want to say Please maaf kar do mujhe 
+    or 2025 ki negativity
+    gussa 2025 me hi chhor do 
+    or mujhe apna samajh ke maaf kar do....
+
+               Please Forgive Me. 
+  </div>
+
+  <div class="signature">— Akshat</div>
+</div>
+
+
+<script>
+// MOBILE SAFE TAP + CLICK
+const card = document.getElementById("card");
+
+function spawnHeart(x, y) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = x + "px";
+  heart.style.top = y + "px";
+
+  heart.style.fontSize = (20 + Math.random()*20) + "px";
+
+  card.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 1200);
+}
+
+// Works on both mobile & desktop
+function tap(e) {
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  for (let i=0; i<14; i++) {
+    setTimeout(() => spawnHeart(x, y), i*50);
+  }
+}
+
+card.addEventListener("click", tap);
+card.addEventListener("touchstart", function(e){
+  const t = e.touches[0];
+  tap(t);
+});
+</script>
+
+</body>
+</html>
